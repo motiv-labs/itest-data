@@ -1,0 +1,4 @@
+#foreach( $news in $dotcontent.pull("+contentType:News",10,"modDate desc") )
+    <h3>$news.title</h3>
+    <p>$news.tags</p>
+#end  

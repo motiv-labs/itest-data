@@ -1,0 +1,12 @@
+#if($UtilMethods.isSet($request.getParameter("department")))
+    #set($department        = $!request.getParameter("department"))
+    #set($search_department = " +employee.department:$department")
+#else
+    #set($search_department = "")
+#end
+
+<ul>
+    #foreach( $staff in $dotcontent.pull("+contentType:employee"$!{search_department}, 10, "employee.lastName, employee.firstName" )
+        <li>$staff.lastName, $staff.firstName: $staff.department</li>
+    #end
+</ul>
